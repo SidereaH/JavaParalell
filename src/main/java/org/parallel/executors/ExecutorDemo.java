@@ -19,9 +19,8 @@ public class ExecutorDemo {
      * Подсчитывает количетсво вхождений заданного слова в указанном файле
      * @param word - слово для поиска
      * @param path - путь к файлу
-     * @return
      */
-    public static long occurrebnces(String word, Path path){
+    public static long occurrences(String word, Path path){
         try(var in = new Scanner(path)){
             int count = 0;
             while (in.hasNext()){
@@ -83,7 +82,7 @@ public class ExecutorDemo {
             var tasks = new ArrayList<Callable<Long>>();
             for(Path file : files){
                 Callable<Long> task = () ->
-                        occurrebnces(word, file);
+                        occurrences(word, file);
                 tasks.add(task);
             }
             ExecutorService executor = Executors.newCachedThreadPool();
